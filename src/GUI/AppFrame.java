@@ -175,7 +175,7 @@ public class AppFrame extends JFrame {
         healthLabel.setHorizontalAlignment(JLabel.CENTER);
         healthLabel.setVerticalTextPosition(JLabel.CENTER);
         healthLabel.setFont(new Font(Font.SERIF, Font.BOLD, 40));
-        healthLabel.setForeground(new Color(200, 50, 50));
+        healthLabel.setForeground(new Color(0, 255, 0));
 
         statsAreaPanel = new JPanel(new BorderLayout());
         statsAreaPanel.setBackground(new Color(50, 50, 100));
