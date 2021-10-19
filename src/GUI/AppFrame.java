@@ -4,9 +4,19 @@ import Classes.Cat;
 import Classes.Cheese;
 import Classes.Mouse;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.KeyStroke;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.util.Random;
 
 public class AppFrame extends JFrame {
@@ -214,6 +224,11 @@ public class AppFrame extends JFrame {
         cheese3Label.setLocation(cheese3.getxCoord(), cheese3.getyCoord());
         cheese3Label.setVisible(true);
 
+        tomLabel = new JLabel(catIcon);
+        tomLabel.setSize(tom.getWidth(), tom.getHeight());
+        tomLabel.setLocation(tom.getxCoord(), tom.getyCoord());
+        tomLabel.setVisible(true);
+
         background = new JLabel(backgroundIcon);
         background.setSize(1280, 720);
         background.setLocation(0, 0);
@@ -223,6 +238,7 @@ public class AppFrame extends JFrame {
         //playAreaPanel.setBackground(new Color(0, 255, 0));
         //playAreaPanel.setOpaque(true);
         playAreaPanel.add(jerryLabel);
+        playAreaPanel.add(tomLabel);
         playAreaPanel.add(cheese1Label);
         playAreaPanel.add(cheese2Label);
         playAreaPanel.add(cheese3Label);
