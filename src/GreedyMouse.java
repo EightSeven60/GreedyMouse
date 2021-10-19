@@ -20,18 +20,6 @@ public class GreedyMouse {
         ImageIcon death = new ImageIcon("images/death50x50.png");
         
         while (true) {
-            if (i % 200 == 0) {
-                jerry.addHealth(-100);
-                jerryHealth.setText("Health: "+ jerry.getHealth());
-                colorValue = (int)((0.0002 * Math.pow(jerry.getHealth(), 2)) - (0.4250 * jerry.getHealth()) + 255);
-                if (colorValue > 255) {
-                    colorValue = 255;
-                }
-                else if (colorValue < 0) {
-                    colorValue = 0;
-                }
-                jerryHealth.setForeground(new Color(colorValue, 255 - colorValue, 0));
-            }
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
@@ -74,6 +62,18 @@ public class GreedyMouse {
             tom.setxCoord(tom.getxCoord() + tom.getSpeedX());
             tom.setyCoord(tom.getyCoord() + tom.getSpeedY());
             tomLabel.setLocation(tom.getxCoord(), tom.getyCoord());
+            if (i % 200 == 0) {
+                jerry.addHealth(-100);
+                jerryHealth.setText("Health: "+ jerry.getHealth());
+                colorValue = (int)((0.0002 * Math.pow(jerry.getHealth(), 2)) - (0.4250 * jerry.getHealth()) + 255);
+                if (colorValue > 255) {
+                    colorValue = 255;
+                }
+                else if (colorValue < 0) {
+                    colorValue = 0;
+                }
+                jerryHealth.setForeground(new Color(colorValue, 255 - colorValue, 0));
+            }
             ++i;
         }
     }
