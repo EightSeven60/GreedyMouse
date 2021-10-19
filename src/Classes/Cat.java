@@ -6,9 +6,11 @@ public class Cat extends Entity{
     protected int speedY;
     public Cat(int xCoord, int yCoord) {
         super(xCoord, yCoord, 50, 50);
-        Random random = new Random();
-        speedX= (random.nextInt() % 5) + 5;
-        speedY = (random.nextInt() % 5) + 5;
+        //Random random = new Random();
+        //speedX = (random.nextInt() % 5) + 5;
+        //speedY = (random.nextInt() % 5) + 5;
+        speedX = 2;
+        speedY = 2;
     }
 
     public int getSpeedX() {

@@ -3,20 +3,37 @@ import Classes.Mouse;
 import GUI.AppFrame;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class GreedyMouse {
     public static void main(String[] args) {
+        int i = 0;
+        int colorValue;
+
         AppFrame appFrame = new AppFrame();
 
         Cat tom = appFrame.getTom();
         Mouse jerry = appFrame.getJerry();
         JLabel tomLabel = appFrame.getTomLabel();
+        JLabel jerryHealth = appFrame.getHealthLabel();
 
         ImageIcon death = new ImageIcon("images/death50x50.png");
         
         while (true) {
+            if (i % 200 == 0) {
+                jerry.addHealth(-100);
+                jerryHealth.setText("Health: "+ jerry.getHealth());
+                colorValue = (int)((0.0002 * Math.pow(jerry.getHealth(), 2)) - (0.4250 * jerry.getHealth()) + 255);
+                if (colorValue > 255) {
+                    colorValue = 255;
+                }
+                else if (colorValue < 0) {
+                    colorValue = 0;
+                }
+                jerryHealth.setForeground(new Color(colorValue, 255 - colorValue, 0));
+            }
             try {
-                Thread.sleep(100);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -57,6 +74,7 @@ public class GreedyMouse {
             tom.setxCoord(tom.getxCoord() + tom.getSpeedX());
             tom.setyCoord(tom.getyCoord() + tom.getSpeedY());
             tomLabel.setLocation(tom.getxCoord(), tom.getyCoord());
+            ++i;
         }
     }
 }

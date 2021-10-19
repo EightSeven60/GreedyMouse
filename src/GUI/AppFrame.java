@@ -111,9 +111,11 @@ public class AppFrame extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             int speed = (int)(-0.01 * jerry.getHealth() + 25);
-            jerryLabel.setLocation(jerryLabel.getX(), jerryLabel.getY() - speed);
-            jerry.setxCoord(jerry.getxCoord());
-            jerry.setyCoord(jerry.getyCoord() - speed);
+            if (jerry.getyCoord() > 0) {
+                jerryLabel.setLocation(jerryLabel.getX(), jerryLabel.getY() - speed);
+                jerry.setxCoord(jerry.getxCoord());
+                jerry.setyCoord(jerry.getyCoord() - speed);
+            }
             detectAndEatCheese();
         }
     }
@@ -121,9 +123,11 @@ public class AppFrame extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             int speed = (int)(-0.01 * jerry.getHealth() + 25);
-            jerryLabel.setLocation(jerryLabel.getX(), jerryLabel.getY() + speed);
-            jerry.setxCoord(jerry.getxCoord());
-            jerry.setyCoord(jerry.getyCoord() + speed);
+            if (jerry.getyCoord() < 720 - jerry.getHeight() - 100) {
+                jerryLabel.setLocation(jerryLabel.getX(), jerryLabel.getY() + speed);
+                jerry.setxCoord(jerry.getxCoord());
+                jerry.setyCoord(jerry.getyCoord() + speed);
+            }
             detectAndEatCheese();
         }
     }
@@ -131,9 +135,11 @@ public class AppFrame extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             int speed = (int)(-0.01 * jerry.getHealth() + 25);
-            jerryLabel.setLocation(jerryLabel.getX() - speed, jerryLabel.getY());
-            jerry.setxCoord(jerry.getxCoord() - speed);
-            jerry.setyCoord(jerry.getyCoord());
+            if (jerry.getxCoord() > 0) {
+                jerryLabel.setLocation(jerryLabel.getX() - speed, jerryLabel.getY());
+                jerry.setxCoord(jerry.getxCoord() - speed);
+                jerry.setyCoord(jerry.getyCoord());
+            }
             detectAndEatCheese();
         }
     }
@@ -141,9 +147,11 @@ public class AppFrame extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             int speed = (int)(-0.01 * jerry.getHealth() + 25);
-            jerryLabel.setLocation(jerryLabel.getX() + speed, jerryLabel.getY());
-            jerry.setxCoord(jerry.getxCoord() + speed);
-            jerry.setyCoord(jerry.getyCoord());
+            if (jerry.getxCoord() < 1280 - jerry.getWidth() - 25) {
+                jerryLabel.setLocation(jerryLabel.getX() + speed, jerryLabel.getY());
+                jerry.setxCoord(jerry.getxCoord() + speed);
+                jerry.setyCoord(jerry.getyCoord());
+            }
             detectAndEatCheese();
         }
     }
@@ -180,7 +188,7 @@ public class AppFrame extends JFrame {
         cheese3 = new Cheese(Math.abs(random.nextInt()) % (WINDOW_WIDTH - 50), Math.abs(random.nextInt()) % (WINDOW_HEIGHT - 50 - 50 - 50));
         tom = new Cat(Math.abs(random.nextInt()) % (WINDOW_WIDTH - 50), Math.abs(random.nextInt()) % (WINDOW_HEIGHT - 50 - 50 - 50));
 
-        healthLabel = new JLabel("Health: "+ jerry.getHealth());
+        healthLabel = new JLabel("Health: " + jerry.getHealth());
         healthLabel.setVisible(true);
         healthLabel.setHorizontalAlignment(JLabel.CENTER);
         healthLabel.setVerticalTextPosition(JLabel.CENTER);
